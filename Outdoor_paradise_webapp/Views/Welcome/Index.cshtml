@@ -1,0 +1,90 @@
+﻿@model AppUser
+@{
+        Layout = "../Shared/_CustomerLayout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Welcome @Model.Full_name</h2>
+    </div>
+            
+    <div class="card-body">
+        <div class="rowoverride">
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-header">
+                        <h4>Personal Details</h4>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">First Name</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.First_name)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Last Name</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Last_name)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Username</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.UserName)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Phone Number</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Phone)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-header">
+                        <h4>Address Details</h4>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Address</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Address)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">City</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.City)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">State</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.State)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Zip</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Zip)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-header">
+                        <h4>Company Name (Optional)</h4>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Company</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Company_name)</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+

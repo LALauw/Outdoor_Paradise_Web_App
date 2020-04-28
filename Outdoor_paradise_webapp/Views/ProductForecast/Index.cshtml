@@ -1,0 +1,73 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Common;
+
+@model Product_ForecastListModel
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_MarketingLayout.cshtml";
+}
+<div class="card">
+	<div class="card-header">
+		<h2>Product Forecast Outdoor Paradise</h2>
+		<p>
+			<a asp-action="Create" class="btn btn-primary">Create New</a>
+		</p>
+	</div>
+	<div class="table-responsive table-striped table-bordered card-body">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>
+						@Html.ActionLink("Product", "Index", new { sortOrder = ViewBag.ProductSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Year", "Index", new { sortOrder = ViewBag.YearSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Month", "Index", new { sortOrder = ViewBag.MonthSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Expected Volume", "Index", new { sortOrder = ViewBag.EvolumeSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						Options
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model.ProductForcasts) {
+					<tr>
+						<td>
+							@Html.DisplayFor(model => item.Product)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Year)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Month)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Expected_Volume)
+						</td>
+						<td>
+							<a asp-action="Edit" asp-route-product="@item.Product" asp-route-year="@item.Year" asp-route-month="@item.Month" class="btn btn-outline-primary" style="margin-bottom:5px;">Edit</a>
+							<a asp-action="Details" asp-route-product="@item.Product" asp-route-year="@item.Year" asp-route-month="@item.Month" class="btn btn-outline-primary" style="margin-bottom:5px;">Details</a>
+							<a asp-action="Delete" asp-route-product="@item.Product" asp-route-year="@item.Year" asp-route-month="@item.Month" class="btn btn-outline-danger" style="margin-bottom:5px;">Delete</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+	<br />
+	<nav aria-label="Page navigation example">
+		@Html.PagedListPager(Model.ProductForcasts, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions() {
+		LiElementClasses = new string[] { "page-item" },
+		PageClasses = new string[] { "page-link" },
+		DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+		DisplayItemSliceAndTotal = false
+		})
+	</nav>
+</div>

@@ -1,0 +1,64 @@
+﻿@model Product_ForecastEditModel
+
+@{
+	ViewData["Title"] = "Edit";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>Edit</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Product Forecast</h5>
+
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+		<hr />
+		<form asp-action="Edit">
+			<input type="submit" value="Save" class="btn btn-primary" />
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Product" />
+			<input type="hidden" asp-for="Year" />
+			<input type="hidden" asp-for="Month" />
+			<div class="rowoverride">
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Product Forecast info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Product</label>
+							<input class="form-control" maxlength="10" value="@Model.Product" disabled />
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Year</label>
+							<input class="form-control" maxlength="10" value="@Model.Year" disabled />
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Month</label>
+							<input class="form-control" maxlength="10" value="@Model.Month" disabled />
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Expected Volume</label>
+							<input asp-for="Expected_Volume" class="form-control" maxlength="10" title="Expected Volume" />
+							<span asp-validation-for="Expected_Volume" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

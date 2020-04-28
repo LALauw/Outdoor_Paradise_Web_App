@@ -1,0 +1,122 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Common;
+
+@model EmployeeListModel
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Employees Outdoor Paradise</h2>
+
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </p>
+        @using (Html.BeginForm())
+        {
+            <p>
+                Find by name: @Html.TextBox("SearchString")
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </p>
+        }
+    </div>
+
+        <div class="table-responsive table-striped table-bordered card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                             Ssn
+                        </th>
+                        <th>
+                            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FnameSortParm, currentFilter = ViewBag.CurrentFilter })
+                        </th>
+                        <th>
+                            @Html.ActionLink("Last name", "Index", new { sortOrder = ViewBag.LnameSortParm, currentFilter = ViewBag.CurrentFilter })
+                        </th>
+                        <th>              
+                            Phone Number   
+                        </th>
+                        <th>            
+                            @Html.ActionLink("Birth Date", "Index", new { sortOrder = ViewBag.BirthSortParm, currentFilter = ViewBag.CurrentFilter })      
+                        </th>
+                        <th>
+                            @Html.ActionLink("Salary", "Index", new { sortOrder = ViewBag.SalarySortParm, currentFilter = ViewBag.CurrentFilter })                        
+                        </th>
+                        <th>                  
+                             @Html.ActionLink("Job", "Index", new { sortOrder = ViewBag.JobSortParm, currentFilter = ViewBag.CurrentFilter })    
+                        </th>
+                        <th>      
+                            @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm, currentFilter = ViewBag.CurrentFilter })
+                        </th>
+                        <th>          
+                            Manager      
+                        </th>
+                        <th>
+                            Department
+                        </th>
+                        <th>
+                            Options
+ 
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Employees)
+                    {
+                        <tr>
+                            <td>
+                              @Html.DisplayFor(model => item.Ssn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.First_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Last_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Work_phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Birth_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Salary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Job)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Postition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.ManagerName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.Department)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary" style="margin-bottom:5px;">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary" style="margin-bottom:5px;">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" style="margin-bottom:5px;">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <nav aria-label="Page navigation example">
+            @Html.PagedListPager(Model.Employees, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions() {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" },
+            DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+            DisplayItemSliceAndTotal = false
+            })
+        </nav>
+
+</div>

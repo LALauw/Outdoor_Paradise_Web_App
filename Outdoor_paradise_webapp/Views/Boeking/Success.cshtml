@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Succesfully Booked!</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Thank you for using our service!</h5>
+        <h5 class="card-title">We hope you enjoy your Holidays!!</h5>
+        <img src="~/images/bookingcompleted.gif" alt="Happy_booking" />
+        <a asp-controller="Welcome" asp-action="Index" title="Dashboard" asp-route-id="@UserManager.GetUserId(User)" class="btn btn-outline-danger">Dashboard</a>
+    </div>
+</div>

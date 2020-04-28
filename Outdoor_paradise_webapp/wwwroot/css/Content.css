@@ -1,0 +1,30 @@
+﻿.content-div {
+    margin: 15px;
+    width: 100%;
+    display:flex;
+    justify-content:space-evenly;
+}
+.jumbotron {
+width:75%;
+}
+.rowoverride{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-basis: 50%;
+    border-radius: 10px;
+}
+.coloverride {
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+    @media(max-width: 576px) {
+        .jumbotron {
+            padding: 1px;
+        }
+    }

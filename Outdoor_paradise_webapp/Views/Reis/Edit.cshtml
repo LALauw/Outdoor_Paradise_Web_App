@@ -1,0 +1,81 @@
+﻿@model Outdoor_paradise_webapp.Models.ReisCreateModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Edit</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Reis</h5>
+        <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+        <hr />
+            <form asp-action="Edit">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-header">
+                            <h4>Edit Info</h4>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Locatie" class="control-label"></label>
+                            <input asp-for="Locatie" class="form-control" />
+                            <span asp-validation-for="Locatie" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Description" class="control-label"></label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <div class="checkbox">
+                                <label>
+                                    <input asp-for="Kind" /> @Html.DisplayNameFor(model => model.Kind)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Max_deelnemers" class="control-label"></label>
+                            <textarea asp-for="Max_deelnemers" class="form-control"></textarea>
+                            <span asp-validation-for="Max_deelnemers" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Min_deelnemers" class="control-label"></label>
+                            <textarea asp-for="Min_deelnemers" class="form-control"></textarea>
+                            <span asp-validation-for="Min_deelnemers" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Image</label>
+                        <select asp-for="Image" class="chosen form-control" asp-items="@(new SelectList(Model.Images, "Id", ("Imagepath")))" required="required" title="Choose 1"></select>
+                    </div>
+       
+            </form>
+        </div>
+    </div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

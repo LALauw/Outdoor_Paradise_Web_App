@@ -1,0 +1,14 @@
+﻿@model MeegeefModel
+@{
+    Layout = "../Shared/_CustomerLayout";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Heeft U medereizigers?</h2>
+    </div>
+    <div class="card-body">
+        <a asp-controller="Boeking" asp-action="AantalInvul" title="Ja" asp-route-reis_uitvoering="@Model.Reis_uitvoering" asp-route-reis="@Model.Reis" class="btn btn-outline-info" style="margin-bottom:5px;">Ja</a>
+        <a asp-controller="Boeking" asp-action="Create" asp-route-reis_uitvoering="@Model.Reis_uitvoering" asp-route-reis="@Model.Reis" class="btn btn-outline-info" style="margin-bottom:5px;">Nee</a>
+        <hr />
+    </div>
+</div>

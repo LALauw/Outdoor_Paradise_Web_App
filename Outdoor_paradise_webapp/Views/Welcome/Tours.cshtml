@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Outdoor_paradise_webapp.Models.ReisViewModel>
+@{ 
+    Layout = "../Shared/_CustomerLayout.cshtml";
+}
+<div class="rowoverride">
+    @foreach (var reis in Model)
+    {
+        <div class="coloverride">
+            <div class="card" style="width: 18rem;">
+                <img src="@reis.ImagePath.Imagepath" class="card-img-top" alt="@reis.ImagePath.Name">
+                <div class="card-body" style="min-height:250px; max-height:250px;">
+                    <h5 class="card-title">@reis.Name</h5>
+                    <p class="card-text hiddenscroll" style="overflow:scroll;overflow-x:hidden; max-height:100px;">@reis.Description</p>
+                    <div style="display:flex;justify-content:center;margin-bottom:10px;">
+                        <a asp-controller="Reis" asp-action="Details" asp-route-id="@reis.Id" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

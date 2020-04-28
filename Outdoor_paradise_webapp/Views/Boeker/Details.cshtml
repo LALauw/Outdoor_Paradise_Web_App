@@ -1,0 +1,37 @@
+﻿@model Outdoor_paradise_webapp.Models.Boeker
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Boeker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IBAN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IBAN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Birth_date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Birth_date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sex)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.sex)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Customer">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

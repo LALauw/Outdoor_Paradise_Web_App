@@ -1,0 +1,63 @@
+﻿@model Product_ForecastCreateModel
+@{
+	ViewData["Title"] = "Create";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>Create</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Product Forecast</h5>
+
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+		<hr />
+		<form asp-action="Create">
+			<input type="submit" value="Create" class="btn btn-primary" />
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="rowoverride">
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Product Forecast info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Product</label>
+							<input asp-for="Product" class="form-control" maxlength="10" title="Product" required />
+							<span asp-validation-for="Product" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Year</label>
+							<input asp-for="Year" class="form-control" maxlength="5" title="Year" required />
+							<span asp-validation-for="Year" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Month</label>
+							<input asp-for="Month" class="form-control" maxlength="3" title="Month" required />
+							<span asp-validation-for="Month" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Expected Volume</label>
+							<input asp-for="Expected_Volume" class="form-control" maxlength="10" title="Expected Volume" />
+							<span asp-validation-for="Expected_Volume" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

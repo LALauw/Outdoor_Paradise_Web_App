@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@model IEnumerable<Outdoor_paradise_webapp.Models.ReisViewModel>
+@{
+
+}
+@if (SignInManager.IsSignedIn(User))
+{
+    <section class="page-section" id="tours" style="background-color:#f3f4f5;">
+
+        <div class="container" style="background-color:#f3f4f5;">
+            <h2 class="text-center mt-0">Tours!</h2>
+            <hr class="divider my-4" />
+            <div class="carousel inactive" data-flickity='{ "autoPlay": true }'>
+                @foreach (var reis in @Model)
+                {
+                    <div class="carousel-cell">
+                        <div class="coloverride">
+                            <div class="card" style="width: 18rem;">
+                                <img src="@reis.ImagePath.Imagepath" class="card-img-top" alt="@reis.ImagePath.Name">
+                                <div class="card-body" style="min-height:250px; max-height:250px;">
+                                    <h5 class="card-title">@reis.Name</h5>
+                                    <p class="card-text hiddenscroll" style="overflow:scroll;overflow-x:hidden; max-height:100px;">@reis.Description</p>
+                                    <div style="display:flex;justify-content:center;margin-bottom:10px;">
+                                        <a asp-controller="Reis" asp-action="Details" asp-route-id="@reis.Id" class="btn btn-primary">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="inactive2">
+                <div class="container-fluid p-0">
+                    <div class="rowoverride">
+                        @foreach (var reis in @Model)
+                        {
+                            <div class="coloverride">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="@reis.ImagePath.Imagepath" class="card-img-top" alt="@reis.ImagePath.Name">
+                                    <div class="card-body" style="min-height:250px; max-height:250px;">
+                                        <h5 class="card-title">@reis.Name</h5>
+                                        <p class="card-text hiddenscroll" style="overflow:scroll;overflow-x:hidden; max-height:100px;">@reis.Description</p>
+                                        <div style="display:flex;justify-content:center;margin-bottom:10px;">
+                                            <a asp-controller="Reis" asp-action="Details" asp-route-id="@reis.Id" class="btn btn-primary">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section class="page-section" id="tours" style="background-color:#f3f4f5;">
+        <div class="container" style="background-color:#f3f4f5;">
+            <h2 class="text-center mt-0">Tours!</h2>
+            <hr class="divider my-4" />
+            <h6 class="text-center mt-0">To view details, kindly login or register first.</h6>
+            <br />
+            <div class="carousel inactive" data-flickity='{ "autoPlay": true }'>
+                @foreach (var reis in @Model)
+                {
+                    <div class="carousel-cell">
+                        <div class="coloverride">
+                            <div class="card" style="width: 18rem;">
+                                <img src="@reis.ImagePath.Imagepath" class="card-img-top" alt="@reis.ImagePath.Name">
+                                <div class="card-body" style="min-height:250px; max-height:250px;">
+                                    <h5 class="card-title">@reis.Name</h5>
+                                    <p class="card-text hiddenscroll" style="overflow:scroll;overflow-x:hidden; max-height:100px;">@reis.Description</p>
+                                    <div style="display:flex;justify-content:center;margin-bottom:10px;">
+                                        <button asp-controller="Reis" asp-action="Details" asp-route-id="@reis.Id" class="btn btn-secondary" disabled aria-disabled="true" style="cursor:default">Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="inactive2">
+                <div class="container-fluid p-0">
+                    <div class="rowoverride">
+                        @foreach (var reis in @Model)
+                        {
+                            <div class="coloverride">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="@reis.ImagePath.Imagepath" class="card-img-top" alt="@reis.ImagePath.Name">
+                                    <div class="card-body" style="min-height:250px; max-height:250px;">
+                                        <h5 class="card-title">@reis.Name</h5>
+                                        <p class="card-text hiddenscroll" style="overflow:scroll;overflow-x:hidden; max-height:100px;">@reis.Description</p>
+                                        <div style="display:flex;justify-content:center;margin-bottom:10px;">
+                                            <button asp-controller="Reis" asp-action="Details" asp-route-id="@reis.Id" class="btn btn-secondary" disabled aria-disabled="true" style="cursor:default">Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

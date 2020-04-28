@@ -1,0 +1,106 @@
+﻿@model ProductDetailsModel
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+<div class="card">
+	<div class="card-header">
+		<h2>Details</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Product: @Model.Name</h5>
+		<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+		<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+		<hr />
+		<div class="rowoverride">
+			<div class="coloverride">
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-header">
+						<h4>Product Info</h4>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Id)</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Id)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Name)</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Name)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Description</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Description)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Category</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Category)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Introduction date</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Introduction_date)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Color</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Color)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Size</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Size)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Size</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Size)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Product type</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Product_type)</p>
+					</div>
+				</div>
+			</div>
+			<div class="coloverride">
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-header">
+						<h4>Cost Info</h4>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Price</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Price)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Production cost</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Production_cost)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Profit margin</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Profit_margin)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

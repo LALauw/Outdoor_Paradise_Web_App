@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Outdoor_paradise_webapp.Models.Boeker>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IBAN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birth_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sex)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IBAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birth_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sex)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Customer">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Customer">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Customer">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

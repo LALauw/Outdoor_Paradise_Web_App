@@ -1,0 +1,43 @@
+﻿@model Outdoor_paradise_webapp.Models.Course
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>Details</h2>
+	</div>
+	<div>
+		<div class="card-body">
+			<h5 class="card-title">Course: @Model.Name </h5>
+			<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+			<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+			<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+			<hr />
+			<div class="rowoverride" style="justify-content:space-between ;">
+				<div class="coloverride" style="float: left;">
+					<div class="card" style="width: 25rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 25rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Name)</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Name)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 25rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Description)</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Description)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

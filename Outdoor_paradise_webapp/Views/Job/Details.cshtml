@@ -1,0 +1,50 @@
+﻿@model Outdoor_paradise_webapp.Models.Job
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+<div class="card">
+	<div class="card-header">
+		<h2>Details</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Job: @Model.Title</h5>
+		<hr />
+		<div class="card" style="width: 18rem;margin-bottom:10px;">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Code)</h6>
+				<p class="card-text">@Html.DisplayFor(model => model.Code)</p>
+			</div>
+		</div>
+		<div class="card" style="width: 18rem;margin-bottom:10px;">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Title)</h6>
+				<p class="card-text">@Html.DisplayFor(model => model.Title)</p>
+			</div>
+		</div>
+		<div class="card" style="width: 18rem;margin-bottom:10px;">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Minimum Salary</h6>
+				<p class="card-text">@Html.DisplayFor(model => model.Min_salary)</p>
+			</div>
+		</div>
+		<div class="card" style="width: 18rem;margin-bottom:10px;">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">Maximum Salary</h6>
+				<p class="card-text">@Html.DisplayFor(model => model.Max_salary)</p>
+			</div>
+		</div>
+		<div class="card" style="width: 18rem;margin-bottom:10px;">
+			<div class="card-body">
+				<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Title)</h6>
+				<p class="card-text">@Html.DisplayFor(model => model.Title)</p>
+			</div>
+		</div>
+		<div>
+			<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+			<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+			<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+		</div>
+	</div>
+</div>

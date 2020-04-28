@@ -1,0 +1,65 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@using Outdoor_paradise_webapp.Models;
+@model LoginViewModel
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "_IdentityLayout";
+}
+<div class="limiter">
+    <div class="container-login100">
+
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <a asp-controller="Home" asp-action="Index"><img src="~/images/oplogo.png" alt="OutdoorLogo" /></a>
+                <p>Return to Homepage</p>
+            </div>
+
+            <form class="login100-form" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <span class="login100-form-title">
+                    Login
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" placeholder="Email" asp-for="Email">
+                    <span class="focus-input100 text-danger" asp-validation-for="Email"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" placeholder="Password" asp-for="Password">
+                    <span class="focus-input100" asp-validation-for="Password"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <label asp-for="RememberMe">
+                        <input asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+
+                <div class="text-center p-t-136">
+                    <a class="txt2" asp-controller="Account" asp-action="Register">
+                        Create your Account
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

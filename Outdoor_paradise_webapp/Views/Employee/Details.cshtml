@@ -1,0 +1,175 @@
+﻿@model Outdoor_paradise_webapp.Models.EmployeeDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "../Shared/_HRMLayout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Details</h2>
+    </div>
+		<div class="card-body">
+			<h5 class="card-title">Employee: @Model.First_name @Model.Last_name</h5>
+			<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+			<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+			<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+			<hr />
+			<div class="rowoverride">
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Personal Info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Ssn)</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Ssn)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.First_name)</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.First_name)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Last name</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Last_name)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Email</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Email)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Work_phone</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Work_phone)</p>
+						</div>
+					</div>
+				</div>
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Address Info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Street</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Street)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">City</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.City)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">State</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.State)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Zip_code</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Zip_code)</p>
+						</div>
+					</div>
+				</div>
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Other Info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Birth Date</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Birth_date)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Termination Date</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Termination_date)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Life Insurance</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Bene_life_ins)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Health Insurance</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Bene_health_ins)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Day Care</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Bene_day_care)</p>
+						</div>
+					</div>
+				</div>
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Work Info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Job</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.JobName)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Department</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Department)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.ManagerName)</p>
+						</div>
+					</div>
+
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Postition</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Position_en)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Extension</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Extension)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Access Level</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Acces_level)</p>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<h6 class="card-subtitle mb-2 text-muted">Status</h6>
+							<p class="card-text">@Html.DisplayFor(model => model.Status)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>

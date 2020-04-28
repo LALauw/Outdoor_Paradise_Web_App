@@ -1,0 +1,60 @@
+﻿@model ExcursieCreateModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Create</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Excursie</h5>
+
+
+        <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+        <hr />
+        <form asp-action="Create">
+            <input type="submit" value="Create" class="btn btn-primary" style="margin-bottom:10px;" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label class="control-label">Employee</label>
+                    <select asp-for="Gids" class="chosen form-control" asp-items="@(new SelectList(Model.Gidsen, "Id", ("Naam")))" required="required" title="Choose 1"></select>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input  asp-for="Name" class="form-control" required title="Enter a Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label asp-for="Datum" class="control-label"></label>
+                    <input value="@DateTime.Now" type="date" asp-for="Datum" class="form-control" required title="Enter a date" />
+                    <span asp-validation-for="Datum" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label asp-for="Prijs" class="control-label"></label>
+                    <input asp-for="Prijs" class="form-control" required title="Excursie Prijs" />
+                    <span asp-validation-for="Prijs" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control" maxlength="255" required title="Enter a description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,76 @@
+﻿@model RegisterBoekerViewModel
+@{
+    Layout = "../Shared/_IdentityLayout.cshtml";
+}
+
+<div class="limiter">
+    <div class="container-login100">
+
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <a asp-controller="Home" asp-action="Index"><img src="~/images/oplogo.png" alt="OutdoorLogo" /></a>
+                <p>Return to Homepage</p>
+            </div>
+
+            <form class="login100-form" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <span class="login100-form-title">
+                    Booker Registration
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    <div class="coloverride">
+                        <label class="input-100">Email</label>
+                        <input class="input100" placeholder="Example@hotmail.com" asp-for="Email">
+                        <span class="focus-input100 text-danger" asp-validation-for="Email"></span>
+                        <span class="symbol-input100"style="height:66%">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <div class="coloverride">
+                            <label class="input-100">IBAN</label>
+                            <input class="input100" placeholder="NL02 ABNA 0123 4567 89" asp-for="IBAN" maxlength="34" title="Example: NL02 ABNA 0123 4567 89">
+                            <span class="focus-input100 text-danger" asp-validation-for="IBAN"></span>
+                            <span class="symbol-input100" style="height:66%">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <div class="coloverride">
+                            <label class="input-100">Date of birth</label>
+                            <input class="input100" placeholder="Birthdate" asp-for="Birth_date" type="date" value="Birthdate">
+                            <span class="focus-input100 text-danger" asp-validation-for="Birth_date"></span>
+                            <span class="symbol-input100" style="height:66%">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <div class="coloverride">
+                            <select asp-for="Sex" class="input-100" required title="Required!">
+                                <option></option>
+                                <option>M</option>
+                                <option>V</option>
+                                <option>O</option>
+                            </select>
+                            <span class="focus-input100 text-danger" asp-validation-for="Sex"></span>
+                            <span class="symbol-input100">
+                                Gender
+                            </span>
+                            </div>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button type="submit" class="login100-form-btn">
+                                Apply
+                            </button>
+                        </div>
+</form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

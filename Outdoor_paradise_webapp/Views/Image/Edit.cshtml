@@ -1,0 +1,64 @@
+﻿@model Image
+
+@{
+	ViewData["Title"] = "Edit";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>Edit</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Image: @Model.Name</h5>
+
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+		<hr />
+		<form asp-action="Edit">
+			<input type="submit" value="Save" class="btn btn-primary" />
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Id" />
+			<div class="rowoverride">
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Image info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Id</label>
+							<input class="form-control" maxlength="10" value="@Model.Id" disabled/>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Name</label>
+							<input asp-for="Name" class="form-control" maxlength="255" title="Name" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Product</label>
+							<input asp-for="Product_id" class="form-control" maxlength="10" title="Product" />
+							<span asp-validation-for="Product_id" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Imagepath</label>
+							<input asp-for="Imagepath" class="form-control" maxlength="255" title="Imagepath" />
+							<span asp-validation-for="Imagepath" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

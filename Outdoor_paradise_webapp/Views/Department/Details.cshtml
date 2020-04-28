@@ -1,0 +1,38 @@
+﻿@model Outdoor_paradise_webapp.Models.DepartmentDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "../Shared/_HRMLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Details</h2>
+    </div>
+    <div>
+        <div class="card-body">
+            <h4>Department</h4>
+            <hr />
+            <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+        </div>
+        <div class="coloverride" style="display:inline-flex">
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-header">
+                    <h4>Info</h4>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Name)</h6>
+                    <p class="card-text">@Html.DisplayFor(model => model.Name)</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+                    <p class="card-text">@Html.DisplayFor(model => model.Manager) - @Html.DisplayFor(model => model.EmployeeModel.FullName)</p>
+                </div>
+            </div>
+        </div>        
+        </div>
+    </div>

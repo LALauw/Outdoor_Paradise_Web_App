@@ -1,0 +1,143 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Outdoor_paradise_webapp</title>
+
+    <environment include="Development">
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <link href="~/css/Content.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/styles_home.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+    </environment>
+    <environment exclude="Development">
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <link href="~/css/Content.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/styles_home.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    </environment>
+</head>
+<body id="page-top">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="~/images/oplogosm.png" alt="brandlogo" style="max-height:150px;max-width:150px;" /></a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive" style="float: right; flex-grow:0;">
+                    <form asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Page("/Index", new { controller = "Home" })" method="post" id="logoutForm" class="logged">
+                        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#tours">Tours</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#happy">Happy!</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#contact">Contact</a></li>
+
+                            <li class="nav-item"><a class="nav-link btn btn-primary" style="cursor:pointer; margin:5px; " asp-controller="Welcome" asp-action="Index" title="Dashboard" asp-route-id="@UserManager.GetUserId(User)">My Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-danger" style="cursor:pointer; margin:5px; text-align:center;" onclick="document.getElementById('logoutForm').submit()">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-dark disabled" aria-disabled="true" style="margin:5px;">Welcome @User.Identity.Name </a></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    }
+    else
+    {
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="~/images/oplogosm.png" alt="brandlogo" style="max-height:150px;max-width:150px;" /></a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive" style="float: right; flex-grow:0;">
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="logged">
+                        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#tours">Tours</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#happy">Happy!</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" href="#contact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link btn btn-primary js-scroll-trigger" style="cursor:pointer; margin:5px;" asp-controller="Account" asp-action="Login">Login / Register</a></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    }
+    <!--
+    <div class="d-flex" id="wrapper">
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading"><img src="~/images/oplogo.png" alt="oplogo"/></div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Department" asp-action="Index">Departments</a>
+            </div>
+        </div>
+
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <partial name="_LoginPartial"/>
+                    </ul>
+
+            </nav>
+       -->
+    @RenderBody()
+    <footer style="background-color:#f3f4f5;">
+        <div class="container" style="background-color:#f3f4f5;"><div class="small text-center text-muted">&copy; 2020 - Outdoor_paradise_webapp</div></div>
+    </footer>
+
+    <!--
+        </div>
+        </div>
+        </div>
+    -->
+
+    <environment include="Development">
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="~/js/site.js"></script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="~/js/site.js"></script>
+        <script src="~/js/scripts.js"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

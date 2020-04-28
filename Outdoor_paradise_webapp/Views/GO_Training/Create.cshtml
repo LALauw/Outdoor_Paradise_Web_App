@@ -1,0 +1,50 @@
+﻿@model Outdoor_paradise_webapp.Models.GO_TrainingEditModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Create</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Training</h5>
+
+       
+        <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+        <hr />
+        <form asp-action="Create">
+            <input type="submit" value="Create" class="btn btn-primary" style="margin-bottom:10px;"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label class="control-label">Employee</label>
+                    <select asp-for="Employee" class="chosen form-control" asp-items="@(new SelectList(Model.Employees, "Id", ("FullName")))" required="required" title="Choose 1">
+                    </select>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label class="control-label">Employee</label>
+                    <select asp-for="Course" class="chosen form-control" asp-items="@(new SelectList(Model.Courses, "Id", ("Name")))" required="required" title="Choose 1">
+                    </select>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label asp-for="Year_taken" class="control-label"></label>
+                    <input asp-for="Year_taken" class="form-control" maxlength="4" required title="Enter a Year! Example: 2000" />
+                    <span asp-validation-for="Year_taken" class="text-danger"></span>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

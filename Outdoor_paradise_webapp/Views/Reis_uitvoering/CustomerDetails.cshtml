@@ -1,0 +1,120 @@
+﻿@model Reis_uitvoeringModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Details</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Reis Uitvoering voor reis: @Model.ReisObj.Name</h5>
+        <a class="btn btn-outline-dark" asp-action="YourTours" asp-controller="Welcome" asp-route-username="@UserManager.GetUserName(User)">Back to List</a>
+        <hr />
+        <div class="rowoverride">
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-header">
+                        <h4>Uitvoering Info</h4>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Totaal Prijs</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.TotaalPrijs)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Reis prijs</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Prijs_per_deelnemer)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Aantal Boekingen</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.countBookings)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Max deelnemers</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.ReisObj.Max_deelnemers)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-header">
+                        <h4>Reis Info</h4>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Reis</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.ReisObj.Name)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Locatie</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.ReisObj.Locatie)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Kind Toegestaan?</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.ReisObj.Kind)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="coloverride">
+                @if (Model.Excursies.Any())
+                {
+                    @foreach (var e in Model.Excursies)
+                    {
+                        <div class="coloverride">
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-header">
+                                    <h4>Excursie: @e.Name</h4>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted">Gids</h6>
+                                    <p class="card-text">@e.GidsNaam</p>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted">Prijs</h6>
+                                    <p class="card-text">@e.Prijs</p>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted">Datum</h6>
+                                    <p class="card-text">@e.Datum</p>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted">Description</h6>
+                                    <p class="card-text">@e.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            
+        </div>
+</div>
+
+
+

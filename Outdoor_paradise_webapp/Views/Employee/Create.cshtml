@@ -1,0 +1,271 @@
+﻿@model EmployeeCreateModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "../Shared/_HRMLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Create</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Employee</h5>
+
+        <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+        <hr />
+                <form asp-action="Create">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="rowoverride">
+                        <div class="coloverride">
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-header">
+                                    <h4>Personal info</h4>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Social Security Number</label>
+                                    <input asp-for="Ssn" class="form-control" maxlength="9" required title="9 Numbers"/>
+                                    <span asp-validation-for="Ssn" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">First Name</label>
+                                    <input asp-for="First_name" class="form-control" maxlength="50" title="First Name"/>
+                                    <span asp-validation-for="First_name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Last Name</label>
+                                    <input asp-for="Last_name" class="form-control" maxlength="50" title="Last Name"/>
+                                    <span asp-validation-for="Last_name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" maxlength="50" title="Employee Email"/>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Fax</label>
+                                    <input asp-for="Fax" class="form-control" maxlength="13" title="Fax 13 characters"/>
+                                    <span asp-validation-for="Fax" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Gender</label>
+                                    <select asp-for="Sex" class="form-control" required title="Required!">
+                                        <option></option>
+                                        <option>M</option>
+                                        <option>V</option>
+                                        <option>O</option>
+                                    </select>
+                                    <span asp-validation-for="Sex" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Phone Number</label>
+                                    <input asp-for="Work_phone" class="form-control" maxlength="13" title="Phone Number 13 Characters Max"/>
+                                    <span asp-validation-for="Work_phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Salary</label>
+                                    <input asp-for="Salary" class="form-control" title="It's Lit bro 42069666"/>
+                                    <span asp-validation-for="Salary" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coloverride">
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-header">
+                                    <h4>Address info</h4>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Street</label>
+                                    <input asp-for="Street" class="form-control" maxlength="50" />
+                                    <span asp-validation-for="Street" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">City</label>
+                                    <input asp-for="City" class="form-control" maxlength="50"/>
+                                    <span asp-validation-for="City" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">State</label>
+                                    <input asp-for="State" class="form-control" maxlength="2" title="Two letter State code"/>
+                                    <span asp-validation-for="State" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Zip_Code</label>
+                                        <input asp-for="Zip_code" class="form-control" maxlength="5" title="Zip Code Max 5"/>
+                                        <span asp-validation-for="Zip_code" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coloverride">
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-header">
+                                    <h4>Other info</h4>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Date Hired</label>
+                                    <input asp-for="Date_hired" class="form-control" />
+                                    <span asp-validation-for="Date_hired" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Birth Date</label>
+                                    <input asp-for="Birth_date" class="form-control" />
+                                    <span asp-validation-for="Birth_date" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Termination Date</label>
+                                    <input asp-for="Termination_date" class="form-control" />
+                                    <span asp-validation-for="Termination_date" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Life Insurance</label>
+                                    <select asp-for="Bene_life_ins" class="form-control" required>
+                                        <option></option>
+                                        <option>Y</option>
+                                        <option>N</option>
+                                    </select>
+                                    <span asp-validation-for="Bene_life_ins" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Health Insurance</label>
+                                    <select asp-for="Bene_health_ins" class="form-control" required>
+                                        <option></option>
+                                        <option>Y</option>
+                                        <option>N</option>
+                                    </select>
+                                    <span asp-validation-for="Bene_health_ins" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-body">
+                                    <label class="control-label">Day Care</label>
+                                    <select asp-for="Bene_day_care" class="form-control" required>
+                                        <option></option>
+                                        <option>Y</option>
+                                        <option>N</option>
+                                    </select>
+                                    <span asp-validation-for="Bene_day_care" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coloverride">
+                            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                <div class="card-header">
+                                    <h4>Work Info</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Status</label>
+                                        <select asp-for="Status" class="form-control" required>
+                                            <option></option>
+                                            <option>A</option>
+                                            <option>L</option>
+                                        </select>
+                                        <span asp-validation-for="Status" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Position</label>
+                                        <input asp-for="Position_en" class="form-control" maxlength="50"/>
+                                        <span asp-validation-for="Position_en" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Extension</label>
+                                        <input asp-for="Extension" class="form-control" maxlength="6"/>
+                                        <span asp-validation-for="Extension" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Access Level</label>
+                                        <input asp-for="Acces_level" class="form-control" maxlength="4"/>
+                                        <span asp-validation-for="Acces_level" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Manager</label>
+                                        <select asp-for="Manager" class="form-control" asp-items="@(new SelectList(Model.Managers, "Id", "FullName"))" required="required" title="Choose 1">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Department</label>
+                                        <select asp-for="Department" class="form-control" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" required="required"  title="Choose 1">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                                    <div class="card-body">
+                                        <label class="control-label">Job</label>
+                                        <select asp-for="Job" class="form-control" asp-items="@(new SelectList(Model.Jobs, "Id", "Title"))" required="required"  title="Choose 1">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

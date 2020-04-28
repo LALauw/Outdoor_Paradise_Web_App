@@ -1,0 +1,45 @@
+﻿@model Campaign
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+<div class="card">
+	<div class="card-header">
+		<h2>Details</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Campaign</h5>
+		<a asp-action="Edit" asp-route-product="@Model.Product" asp-route-promotion="@Model.Promotion" class="btn btn-primary">Edit</a>
+		<a asp-action="Delete" asp-route-product="@Model.Product" asp-route-promotion="@Model.Promotion" class="btn btn-outline-danger">Delete</a>
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+		<hr />
+		<div class="rowoverride">
+			<div class="coloverride">
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-header">
+						<h4>Campaign Info</h4>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Product</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Product)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Promotion</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Promotion)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Discount</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Discount)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model Outdoor_paradise_webapp.Models.Boeker
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Boeker</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IBAN" class="control-label"></label>
+                <input asp-for="IBAN" class="form-control" />
+                <span asp-validation-for="IBAN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birth_date" class="control-label"></label>
+                <input asp-for="Birth_date" class="form-control" />
+                <span asp-validation-for="Birth_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sex" class="control-label"></label>
+                <input asp-for="sex" class="form-control" />
+                <span asp-validation-for="sex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

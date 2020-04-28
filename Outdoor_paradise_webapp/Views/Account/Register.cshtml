@@ -1,0 +1,109 @@
+﻿@model RegisterViewModel
+@{
+    Layout = "../Shared/_IdentityLayout.cshtml";
+}
+
+<div class="limiter">
+    <div class="container-login100">
+
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <a asp-controller="Home" asp-action="Index"><img src="~/images/oplogo.png" alt="OutdoorLogo" /></a>
+                <p>Return to Homepage</p>
+            </div>
+
+            <form class="login100-form" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <span class="login100-form-title">
+                    Register
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" placeholder="Email" asp-for="Email">
+                    <span class="focus-input100 text-danger" asp-validation-for="Email"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" placeholder="Password" asp-for="Password">
+                    <span class="focus-input100" asp-validation-for="Password"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="ConfirmPassword" class="input100" placeholder="Confirm Password" />
+                    <span class="focus-input100 text-danger" asp-validation-for="ConfirmPassword" ></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="First_name" class="input100" placeholder="Name (Required)" maxlength="50" />
+                    <span class="focus-input100 text-danger" asp-validation-for="First_name" ></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-address-card"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="Last_name" class="input100" placeholder="Surname (Required)" maxlength="50" />
+                    <span class="focus-input100 text-danger" asp-validation-for="Last_name" ></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-address-card"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="Address" class="input100" placeholder="Address" maxlength="75" />
+                    <span class="focus-input100 text-danger" asp-validation-for="Address" ></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="City" class="input100" placeholder="City" maxlength="50" />
+                    <span class="focus-input100 text-danger" asp-validation-for="City"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="State" class="input100" placeholder="State" maxlength="2" title="Example for California: CL" />
+                    <span class="focus-input100 text-danger" asp-validation-for="State" ></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i></span>
+
+</div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="Zip" class="input100" placeholder="Zip" maxlength="15" />
+                    <span class="focus-input100 text-danger" asp-validation-for="Zip" ></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="Phone" class="input100" placeholder="Phone (Required)" maxlength="13" title="Example Number: +31612345678" />
+                    <span class="focus-input100 text-danger" asp-validation-for="Phone" ></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="Company_name" class="input100" placeholder="Company (Optional)" maxlength="75" title="If from a Company" />
+                    <span class="focus-input100 text-danger" asp-validation-for="Company_name"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-building" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

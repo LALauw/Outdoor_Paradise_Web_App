@@ -1,0 +1,92 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Outdoor_paradise_webapp</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap4/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/simple-sidebar.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Content.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap4/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/simple-sidebar.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Content.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" type="text/css" />
+    </environment>
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <!--Dit is de sidebar-->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading"><img src="~/images/oplogo.png" alt="oplogo" /></div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-light" asp-action="YourTours" asp-controller="Welcome" asp-route-username="@UserManager.GetUserName(User)">Your Tours</a>
+                <a class="list-group-item list-group-item-action bg-light" asp-action="Tours" asp-controller="Welcome">Book a Tour</a>
+            </div>
+            </div>
+        
+
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">Toggle Sidebar</button>
+                <a class="btn btn-outline-success" asp-controller="Account" asp-action="RegisterBoeker" asp-route-id="@UserManager.GetUserName(User)" style="margin-left:10px;">Apply As Booker</a>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <partial name="_LoginPartial" />
+                </ul>
+
+            </nav>
+
+            <div class="container-fluid"
+                 style="margin-top: 15px;">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; 2020 - Outdoor_paradise_webapp</p>
+                </footer>
+
+            </div>
+        </div>
+        </div>
+    </div>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <script src="~/lib/popper.min.js"></script>
+        <script src="~/lib/bootstrap4/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <script src="~/lib/popper.min.js"></script>
+        <script src="~/lib/bootstrap4/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

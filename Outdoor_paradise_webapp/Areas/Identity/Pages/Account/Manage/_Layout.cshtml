@@ -1,0 +1,29 @@
+﻿@{ 
+    Layout = "/Areas/Identity/Pages/_NewLayout.cshtml";
+}
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <h2>Manage your account</h2>
+
+            <div>
+                <h4>Change your account settings</h4>
+                <hr />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <partial name="_ManageNav" />
+                        </div>
+
+                        <div class="col-sm">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        @section Scripts {
+            @RenderSection("Scripts", required: false)
+        }

@@ -1,0 +1,70 @@
+﻿@model YourToursModel
+@{
+    Layout = "../Shared/_CustomerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Your Bookings</h2>
+    </div>
+    <div class="table-responsive table-striped table-bordered card-body">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Tour
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        End Date
+                    </th>
+                    <th>
+                        Total Price
+                    </th>
+                    <th>
+                        Tour Price (ex. Excursions)
+                    </th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.Reis_uitvoeringen)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReisObj.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReisObj.Locatie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Begin_datum.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Eind_datum.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotaalPrijs)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prijs_per_deelnemer)
+                    </td>
+                    <td>
+                        <a asp-controller="Reis_uitvoering" asp-action="CustomerDetails" asp-route-id="@item.Id" asp-route-model="@Model" class="btn btn-outline-success" style="margin-bottom:5px;">Details</a>
+                        <a asp-controller="Boeking" asp-action="Delete" asp-route-id="@item.Id" asp-route-model="@Model" class="btn btn-outline-danger" style="margin-bottom:5px;">Cancel Booking</a>
+                    </td>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

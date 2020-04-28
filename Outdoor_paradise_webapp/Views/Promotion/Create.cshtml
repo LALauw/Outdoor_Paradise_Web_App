@@ -1,0 +1,64 @@
+﻿@model Promotion
+@{
+	ViewData["Title"] = "Create";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>Create</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Promotion</h5>
+
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+		<hr />
+		<form asp-action="Create">
+			<input type="submit" value="Create" class="btn btn-primary" />
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Id" />
+			<div class="rowoverride">
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Promotion info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Name</label>
+							<input asp-for="Name" class="form-control" maxlength="255" title="Name" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Description</label>
+							<input asp-for="Description" class="form-control" maxlength="255" title="Description" />
+							<span asp-validation-for="Description" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Start date</label>
+							<input asp-for="Date_start" type="date" value="@DateTime.Now" class="form-control" />
+							<span asp-validation-for="Date_start" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">End Date</label>
+							<input asp-for="Date_end" type="date" value="@DateTime.Now" class="form-control" />
+							<span asp-validation-for="Date_end" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

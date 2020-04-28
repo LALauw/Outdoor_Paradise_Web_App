@@ -1,0 +1,137 @@
+﻿@model BoekingCreateModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Confirmation</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Are you sure you want to book the tour: @Model.Reis.Name</h5>
+        <h5 class="card-title">The payment will be automatically payed through the provided IBAN</h5>
+        <a asp-controller="Welcome" asp-action="Index" title="Dashboard" asp-route-id="@UserManager.GetUserId(User)" class="btn btn-outline-danger">Cancel</a>
+        <hr />
+        <div class="rowoverride">
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-header">
+                        <h4>Booking Info</h4>
+                    </div>
+                </div>
+                <div class="card" style="width:18rem; margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Tour</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Reis.Name)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Total Price (incl. Excursions)</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.TotaalPrijs)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Price / Person</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Reis_Uitvoering.Prijs_per_deelnemer)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">IBAN</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Boekende.IBAN)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Start Date</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Reis_Uitvoering.Begin_datum)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Ending Date</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Reis_Uitvoering.Eind_datum)</p>
+                    </div>
+                </div>
+            </div>
+      
+        
+            <div class="coloverride">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-header">
+                            <h4>Our Info</h4>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Boeker" class="control-label"></label>
+                            <input asp-for="Boeker" class="form-control" value="@Model.Customer.Id" disabled />
+                            <input type="hidden" asp-for="Boeker" value="@Model.Customer.Id" />
+                            <span asp-validation-for="Boeker" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Reis_uitvoering" class="control-label"></label>
+                            <input asp-for="Reis_uitvoering" class="form-control" value="@Model.Reis_Uitvoering.Id" disabled />
+                            <input type="hidden" asp-for="Reis_uitvoering" value="@Model.Reis_Uitvoering.Id" />
+                            <span asp-validation-for="Reis_uitvoering" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label asp-for="Datum" class="control-label"></label>
+                            <input asp-for="Datum" class="form-control" value="@Model.Datum" disabled />
+                            <input type="hidden" asp-for="Datum" value="@Model.Datum" />
+                            <span asp-validation-for="Datum" class="text-danger"></span>
+                        </div>
+                    </div>
+                    @for (int i = 0; i < Model.Aantal; i++)
+                    {
+                        
+                    <div class="card" style="width: 18rem;margin-bottom:10px;">
+                        <div class="card-body">
+                            <label class="control-label">Medereiziger @i naam</label>
+                            <input asp-for="Medereizigers[i].Naam" class="form-control" required title="Vul naam in" />
+                            <span asp-validation-for="Medereizigers[i].Naam" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="card-body">
+                            <label class="control-label">Medereiziger @i Geboortedatum</label>
+                            <input asp-for="Medereizigers[i].BirthDate" class="form-control" required title="Vul geboortedatum in" />
+                            <span asp-validation-for="Medereizigers[i].BirthDate" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="card-body">
+                            <label class="control-label">Medereiziger @i Geslacht</label>
+                            <select asp-for="Medereizigers[i].Sex" class="input-100" required title="Required!">
+                                <option></option>
+                                <option>M</option>
+                                <option>V</option>
+                                <option>O</option>
+                            </select>
+                            <span class="focus-input100 text-danger" asp-validation-for="Medereizigers[i].Sex"></span>
+                        </div>
+                    </div>
+                      
+                    }
+                    <input type="submit" value="Book Now" class="btn btn-outline-success" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

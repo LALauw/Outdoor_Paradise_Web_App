@@ -1,0 +1,51 @@
+﻿@model Product_ForecastDetailsModel
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+<div class="card">
+	<div class="card-header">
+		<h2>Details</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Product Forecast</h5>
+		<a asp-action="Edit" asp-route-product="@Model.Product" asp-route-year="@Model.Year" asp-route-month="@Model.Month" class="btn btn-primary">Edit</a>
+		<a asp-action="Delete" asp-route-product="@Model.Product" asp-route-year="@Model.Year" asp-route-month="@Model.Month" class="btn btn-outline-danger">Delete</a>
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+		<hr />
+		<div class="rowoverride">
+			<div class="coloverride">
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-header">
+						<h4>Product Forecast Info</h4>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Product</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Product)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Year</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Year)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Month</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Month)</p>
+					</div>
+				</div>
+				<div class="card" style="width: 18rem;margin-bottom:10px;">
+					<div class="card-body">
+						<h6 class="card-subtitle mb-2 text-muted">Expected Volume</h6>
+						<p class="card-text">@Html.DisplayFor(model => model.Expected_Volume)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

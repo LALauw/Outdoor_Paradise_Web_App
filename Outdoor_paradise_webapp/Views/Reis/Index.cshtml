@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Outdoor_paradise_webapp.Models.ReisViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Index</h2>
+    </div>
+    <div class="card-body">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+ 
+
+    <div class="rowoverride">
+        @foreach (var reis in @Model)
+        {
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;">
+                    <img src="@reis.ImagePath.Imagepath" class="card-img-top" alt="@reis.ImagePath.Name">
+                    <div class="card-body" style="min-height:250px; max-height:250px;position: relative;">
+                        <h5 class="card-title">@reis.Name</h5>
+                        <p class="card-text" style="overflow:hidden">@reis.Description</p>
+                        <div style="position: absolute;bottom: 10px;left: 40px;">
+                            <a asp-controller="Reis" asp-action="AdminDetails" asp-route-id="@reis.Id" class="btn btn-primary">Details</a>
+                            <a asp-controller="Reis" asp-action="Edit" asp-route-id="@reis.Id" class="btn btn-primary">Edit</a>
+                            <a asp-controller="Reis" asp-action="Delete" asp-route-id="@reis.Id" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                }
+            </div>
+       </div>
+</div>

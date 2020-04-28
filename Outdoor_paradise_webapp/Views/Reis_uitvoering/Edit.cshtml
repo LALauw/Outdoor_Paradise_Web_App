@@ -1,0 +1,83 @@
+﻿@model Reis_uitvoeringEditModel
+
+@{
+	ViewData["Title"] = "Edit";
+
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>Edit</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Reis Uitvoering</h5>
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+		<hr />
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-primary" />
+			</div>
+			<div class="rowoverride">
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h2>Uitvoering Aanmaken</h2>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label asp-for="Begin_datum" class="control-label"></label>
+							<input asp-for="Begin_datum" class="form-control" type="date" required title="Required" />
+							<span asp-validation-for="Begin_datum" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label asp-for="Eind_datum" class="control-label"></label>
+							<input asp-for="Eind_datum" class="form-control" type="date" required title="Required" />
+							<span asp-validation-for="Eind_datum" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label asp-for="Prijs_per_deelnemer" class="control-label"></label>
+							<input asp-for="Prijs_per_deelnemer" class="form-control" required title="Required" />
+							<span asp-validation-for="Prijs_per_deelnemer" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Reis</label>
+							<select asp-for="Reis" class="chosen form-control" asp-items="@(new SelectList(Model.Reizen, "Id", ("Name")))" required="required" title="Choose 1"></select>
+						</div>
+					</div>
+				</div>
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h2>Excursies</h2>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<fieldset>
+							<div class="card">
+								<div class="card-header">
+									<h5>Choose Excursions</h5>
+								</div>
+							</div>
+							<div class="card">
+								@foreach(var e in Model.Excursiesheckbox) {
+									<div style="margin: 5px; margin-left:20px;">
+										<input type="checkbox" name="checks" value="@e.Id" checked="@e.Selected" />  @e.Datum.ToString("dd/MM/yyyy") | @e.Name <br />
+									</div>
+								}
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

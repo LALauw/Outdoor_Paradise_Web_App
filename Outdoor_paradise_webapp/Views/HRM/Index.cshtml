@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    Layout = "~/Views/Shared/_HRMLayout.cshtml";
+    var role = ViewBag.role;
+}
+
+<div class="content-div">
+    <div class="rowoverride">
+ 
+        <div class="card" style="width: 18rem;">
+            <img src="~/images/hrmguy.gif" class="card-img-top" alt="HRM_Guy">
+            <div class="card-body">
+                <h5 class="card-title">Enjoy Your Day, Most of all Have fun!</h5>
+                <p class="card-text">We've updated the dashboard with the most recent and modern technologies, enjoy!</p>
+                <a asp-controller="Report" asp-action="Index" class="btn btn-primary">Pull me straight to the Reports!</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+

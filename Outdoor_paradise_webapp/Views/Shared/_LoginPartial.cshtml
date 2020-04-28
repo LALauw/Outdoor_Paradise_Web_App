@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager 
+@if (SignInManager.IsSignedIn(User))
+{
+
+<form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="logged">
+    <div class="header-right">
+        <div class="user-panel">
+            <button type="submit" class="btn btn-outline-success" style="margin-bottom:5px;" asp-controller="Home" asp-action="Index">Homepage</button>
+            <a class="btn btn-outline-primary" style="margin-bottom:5px;" asp-controller="Welcome" asp-action="Index" title="Dashboard" asp-route-id="@UserManager.GetUserId(User)">Dashboard</a>
+            <button type="submit" style="margin-bottom:5px;" class="btn btn-outline-danger" onclick="document.getElementById('logoutForm').submit()">Logout</button>
+            <a class="btn btn-outline-primary disabled" style="margin-bottom:5px;" aria-disabled="true">Welcome @UserManager.GetUserName(User)!</a>
+        </div>
+    </div>
+</form>
+}
+else
+{
+    <div class="header-right">
+        <div class="user-panel">
+            <a class="register" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </div>
+    </div>
+
+}

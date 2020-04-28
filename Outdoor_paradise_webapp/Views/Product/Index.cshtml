@@ -1,0 +1,121 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Common;
+
+@model ProductListModel
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_MarketingLayout.cshtml";
+}
+<div class="card">
+	<div class="card-header">
+		<h2>Product Outdoor Paradise</h2>
+		<p>
+			<a asp-action="Create" class="btn btn-primary">Create New</a>
+		</p>
+		@using(Html.BeginForm()) {
+			<p>
+				Find by name: @Html.TextBox("SearchString")
+				<input type="submit" value="Search" class="btn btn-primary" />
+			</p>
+		}
+	</div>
+	<div class="table-responsive table-striped table-bordered card-body">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>
+						@Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DescriptionSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Category", "Index", new { sortOrder = ViewBag.CategorySortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Introduction date", "Index", new { sortOrder = ViewBag.IdateSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Production Cost", "Index", new { sortOrder = ViewBag.PcostSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Profit Margin", "Index", new { sortOrder = ViewBag.PmarginSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Color", "Index", new { sortOrder = ViewBag.ColorSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Size", "Index", new { sortOrder = ViewBag.SizeSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						@Html.ActionLink("Product type", "Index", new { sortOrder = ViewBag.PTypeSortParm, currentFilter = ViewBag.CurrentFilter })
+					</th>
+					<th>
+						Options
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model.Products) {
+					<tr>
+						<td>
+							@Html.DisplayFor(model => item.Id)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Name)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Description)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Category)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Introduction_date)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Price)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Production_cost)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Profit_margin)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Color)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Size)
+						</td>
+						<td>
+							@Html.DisplayFor(model => item.Product_type)
+						</td>
+						<td>
+							<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary" style="margin-bottom:5px;">Edit</a>
+							<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary" style="margin-bottom:5px;">Details</a>
+							<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" style="margin-bottom:5px;">Delete</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+	<br />
+	<nav aria-label="Page navigation example">
+		@Html.PagedListPager(Model.Products, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions() {
+		LiElementClasses = new string[] { "page-item" },
+		PageClasses = new string[] { "page-link" },
+		DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+		DisplayItemSliceAndTotal = false
+		})
+	</nav>
+</div>

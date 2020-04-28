@@ -1,0 +1,58 @@
+﻿@model Outdoor_paradise_webapp.Models.ReisViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Delete</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Are you sure you want to delete reis: @Model.Name</h5>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-outline-danger" />
+            <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+        </form>
+        <hr />
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-header">
+                <h4>Info</h4>
+            </div>
+        </div>
+        <div class="card" style="width:18rem; margin-bottom:10px;">
+            <img src="@Model.ImagePath.Imagepath" alt="@Model.ImagePath.Name" style="max-height:100%; max-width:100%;" />
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Locatie)</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Locatie)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Kind)</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Kind)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Max_deelnemers)</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Max_deelnemers)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Min_deelnemers)</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Min_deelnemers)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Description)</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
+            </div>
+        </div>
+    </div>
+</div>

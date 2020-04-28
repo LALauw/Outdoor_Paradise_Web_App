@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Outdoor_paradise_webapp</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap4/css/bootstrap.css" type="text/css" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="~/lib/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="~/css/util.css">
+        <link rel="stylesheet" type="text/css" href="~/css/main.css">
+        <!--boven alleen voor identity-->
+        <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/simple-sidebar.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Content.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" type="text/css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap4/css/bootstrap.css" type="text/css" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="~/lib/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="~/css/util.css">
+        <link rel="stylesheet" type="text/css" href="~/css/main.css">
+        <!--boven alleen voor identity-->
+        <link rel="stylesheet" href="~/lib/bootstrap4/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/simple-sidebar.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Content.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" type="text/css" />
+    </environment>
+</head>
+<body>
+    @RenderBody()
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap4/js/popper.js"></script>
+        <script src="~/lib/bootstrap4/js/bootstrap.min.js"></script>
+        <script src="~/lib/select2/select2.min.js"></script>
+        <script src="~/lib/tilt/tilt.jquery.min.js"></script>
+        <script>
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+        </script>
+        <script src="~/js/site.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap4/js/popper.js"></script>
+        <script src="~/lib/bootstrap4/js/bootstrap.min.js"></script>
+        <script src="~/lib/select2/select2.min.js"></script>
+        <script src="~/lib/tilt/tilt.jquery.min.js"></script>
+        <script>
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+        </script>
+        <script src="~/js/site.js"></script>
+
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

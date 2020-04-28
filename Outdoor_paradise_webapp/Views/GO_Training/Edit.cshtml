@@ -1,0 +1,50 @@
+﻿@model Outdoor_paradise_webapp.Models.GO_TrainingEditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_HRMLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Edit</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Go_training: @Model.CourseName from @Model.EmployeeName</h5>
+        <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+        <hr />
+        <form asp-action="Edit">
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label class="control-label">Employee</label>
+                    <select asp-for="Employee" class="chosen form-control" asp-items="@(new SelectList(Model.Employees, "Id", ("FullName")))" required="required" title="Choose 1">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label class="control-label">Employee</label>
+                    <select asp-for="Course" class="chosen form-control" asp-items="@(new SelectList(Model.Courses, "Id", "Name"))" required="required" title="Choose 1">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;margin-bottom:10px;">
+                <div class="card-body">
+                    <label asp-for="Year_taken" class="control-label">Year Taken</label>
+                    <input asp-for="Year_taken" class="form-control" required="required" title="Choose 1" maxlength="4" />
+                    <span asp-validation-for="Year_taken" class="text-danger"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

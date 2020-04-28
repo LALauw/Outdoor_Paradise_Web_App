@@ -1,0 +1,56 @@
+﻿@model Image
+@{
+	ViewData["Title"] = "Create";
+	Layout = "../Shared/_MarketingLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>Create</h2>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Image</h5>
+
+		<a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+
+		<hr />
+		<form asp-action="Create">
+			<input type="submit" value="Create" class="btn btn-primary" />
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="rowoverride">
+				<div class="coloverride">
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-header">
+							<h4>Image info</h4>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Name</label>
+							<input asp-for="Name" class="form-control" maxlength="255" title="Name" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Product</label>
+							<input asp-for="Product_id" class="form-control" maxlength="10" title="Product" />
+							<span asp-validation-for="Product_id" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="card" style="width: 18rem;margin-bottom:10px;">
+						<div class="card-body">
+							<label class="control-label">Imagepath</label>
+							<input asp-for="Imagepath" class="form-control" maxlength="255" title="Imagepath" />
+							<span asp-validation-for="Imagepath" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,46 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_IdentityLayout";
+}
+<div class="limiter">
+    <div class="container-login100">
+
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <a asp-controller="Home" asp-action="Index"><img src="~/images/oplogo.png" alt="OutdoorLogo" /></a>
+                <p>Return to Homepage</p>
+            </div>
+
+            <form class="login100-form" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <span class="login100-form-title">
+                    Register
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" placeholder="Email" asp-for="Input.Email">
+                    <span class="focus-input100 text-danger" asp-validation-for="Input.Email"></span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" placeholder="Password" asp-for="Input.Password">
+                    <span class="focus-input100" asp-validation-for="Input.Password"></span>
+                </div>
+                <div class="wrap-input100 validate-input">
+                    <input asp-for="Input.ConfirmPassword" class="input100" placeholder="Confirm Password"/>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

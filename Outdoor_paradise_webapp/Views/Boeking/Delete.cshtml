@@ -1,0 +1,68 @@
+﻿@model Reis_uitvoeringModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Cancel Booking</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Are you sure you want to cancel your booking of tour: @Model.ReisObj.Name</h5>
+        <h6 class="card-title">Your payment will be canceled, if you've already paid it will be refunded automatically.</h6>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="@Model.Id" />
+            <input type="hidden" asp-for="@Model.boeker" />
+            <input type="submit" value="Cancel my booking" class="btn btn-outline-danger" />
+            <a asp-controller="Welcome" asp-action="YourTours" asp-route-username="@UserManager.GetUserName(User)" class="btn btn-outline-dark">Back to List</a>
+        </form>
+        <hr />
+
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-header">
+                <h4>Uitvoering Info</h4>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Tour</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.ReisObj.Name)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Tour</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.ReisObj.Locatie)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Start Date</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Begin_datum)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Ending Date</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Eind_datum)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Totaal Prijs</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.TotaalPrijs)</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;margin-bottom:10px;">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Price / Person</h6>
+                <p class="card-text">@Html.DisplayFor(model => model.Prijs_per_deelnemer)</p>
+            </div>
+        </div>
+    </div>
+</div>

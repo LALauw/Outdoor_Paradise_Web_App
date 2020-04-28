@@ -1,0 +1,112 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* HEADER NAV*/
+
+.content-div {
+    margin: 15px;
+    width: 100%;
+}
+
+.paginationding {
+    display: inline-block;
+}
+
+    .paginationding a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        .paginationding a.active {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .paginationding a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+.happycontent {
+    max-height: 400px;
+    max-width: 400px;
+    border-radius: 5%;
+    margin: 5px;
+}
+
+.inactive {
+    display: none;
+}
+.inactive2{
+    display: block;
+}
+
+.disableflickity {
+    display: none;
+}
+/* Hide/rearrange for smaller screens */
+
+
+.hrmreportcard {
+width:100%;
+align-items:center;
+text-align:center;
+overflow:scroll;
+}
+
+.cardwidth100 {
+width:100%;
+}
+a {
+    color: #ffc107;
+    transition: ease-in;
+}
+    a:hover {
+        color: #cecece;
+    }
+
+.hiddenscroll::-webkit-scrollbar {
+    display:none;
+}
+
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+    .inactive {
+    display:block;
+    }
+    .inactive2 {
+        display: none;
+    }
+}

@@ -1,0 +1,118 @@
+﻿@model Outdoor_paradise_webapp.Models.ReisViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "../Shared/_CustomerLayout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Details</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Reis: @Model.Name</h5>
+        <a asp-action="Tours" asp-controller="Welcome" class="btn btn-outline-dark">Back</a>
+        <hr />
+        <div class="rowoverride">
+            <div class="coloverride">
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-header">
+                        <h4>Info</h4>
+                    </div>
+                </div>
+                <div class="card" style="width:18rem; margin-bottom:10px;">
+                    <img src="@Model.ImagePath.Imagepath" alt="@Model.ImagePath.Name" style="max-height:100%; max-width:100%;" />
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Locatie)</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Locatie)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Kind)</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Kind)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Max_deelnemers)</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Max_deelnemers)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Min_deelnemers)</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Min_deelnemers)</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;margin-bottom:10px;">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayNameFor(model => model.Description)</h6>
+                        <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Uitvoeringen</h2>
+                    </div>
+                    <div class="table-responsive table-striped table-bordered card-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>
+                                        Start Date
+                                    </th>
+                                    <th>
+                                        End Date
+                                    </th>
+                                    <th>
+                                        Total Price / Person
+                                    </th>
+                                    <th>
+                                        Bookings
+                                    </th>
+                                    <th>
+                                        Excursions
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Uitvoeringen != null)
+                                {
+                                @foreach (var item in Model.Uitvoeringen)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Begin_datum)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Eind_datum)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TotaalPrijs)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.countBookings)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CountExcursies)
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Boeking" asp-action="MedereizigersJa" asp-route-reis_uitvoering="@item.Id" asp-route-reis="@Model.Id" class="btn btn-outline-success" style="margin-bottom:5px;">Book</a>
+                                        <a asp-controller="Boeking" asp-action="CustomerDetails" asp-route-reis_uitvoering="@item.Id" class="btn btn-outline-info" style="margin-bottom:5px;">Info</a>
+                                    </td>
+                                </tr>
+                                }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+          
+            </div>
+            </div>
+        </div>
+</div>

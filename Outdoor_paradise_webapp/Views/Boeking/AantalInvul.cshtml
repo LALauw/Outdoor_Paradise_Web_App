@@ -1,0 +1,18 @@
+﻿@model MeegeefModel2
+@{
+    Layout = "../Shared/_CustomerLayout";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Hoeveel medereizigers heeft u?</h2>
+    </div>
+    <div class="card-body">
+        <form asp-action="AantalInvul">
+            <input asp-for="Reis" type="hidden" value="@Model.Reis" />
+            <input asp-for="Reis_uitvoering" type="hidden" value="@Model.Reis_uitvoering" />
+            <input asp-for="Aantal" required />
+            <input type="submit" value="Create" class="btn btn-primary" style="margin-bottom:10px;" />
+        </form>
+        <hr />
+    </div>
+</div>

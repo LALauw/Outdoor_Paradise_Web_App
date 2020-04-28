@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="list-group">
+    <li class="list-group-item"><a asp-page="./Index" style="color:black;">Profile</a></li>
+    <li class="list-group-item"><a id="change-password" asp-page="./ChangePassword" style="color:black;">Password</a></li>
+    @if (hasExternalLogins)
+    {
+        <li class=""><a id="external-login" asp-page="./ExternalLogins" style="color:black;">External logins</a></li>
+    }
+    <li class="list-group-item"><a asp-page="./TwoFactorAuthentication" style="color:black;">Two-factor authentication</a></li>
+    <li class="list-group-item"><a asp-page="./PersonalData" style="color:black;">Personal data</a></li>
+    <li class="list-group-item"><a asp-controller="Home" asp-action="Index" style="color:black;">Back to Homepage</a></li>
+    <li class="list-group-item"><a asp-controller="Welcome" asp-action="Index" title="Dashboard" asp-route-id="@UserManager.GetUserId(User)" style="color:black;">Back to Dashboard</a></li>
+</ul>
