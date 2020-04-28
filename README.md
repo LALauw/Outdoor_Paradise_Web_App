@@ -1,4 +1,5 @@
 # Outdoor Paradise Web Application
+Public version of the Outdoor Paradise Application. 
 Project SE7 - HHS
 
 ## Intro
