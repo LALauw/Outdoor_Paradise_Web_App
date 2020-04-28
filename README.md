@@ -1,5 +1,6 @@
 # Outdoor Paradise Web Application
 Public version of the Outdoor Paradise Application. 
+Visit the application at: https://outdoorparadiseapplication.azurewebsites.net
 
 Project SE7 - HHS
 
