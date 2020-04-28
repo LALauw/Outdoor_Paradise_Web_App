@@ -20,5 +20,3 @@ We used numerous tools at our disposal to correctly and safely merge the 2 datab
  - HTML / CSS
  - SQL
 
-## The Application v1.0
-todo
